@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Photo Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        figure {
+            margin: 10px;
+            cursor: pointer;
+            outline: none;
+        }
+        img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        img:hover, figure:focus img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive Photo Gallery</h1>
+    <div class="gallery" id="gallery">
+        <figure onclick="openCursor()"><img src="https://source.unsplash.com/200x150/?car1" alt="Car 1"></figure>
+        <figure onclick="openCursor()"><img src="https://source.unsplash.com/200x150/?car2" alt="Car 2"></figure>
+        <figure onclick="openCursor()"><img src="https://source.unsplash.com/200x150/?car3" alt="Car 3"></figure>
+        <figure onclick="openCursor()"><img src="https://source.unsplash.com/200x150/?car4" alt="Car 4"></figure>
+        <figure onclick="openCursor()"><img src="https://source.unsplash.com/200x150/?car5" alt="Car 5"></figure>
+        <figure onclick="openCursor()"><img src="https://source.unsplash.com/200x150/?car6" alt="Car 6"></figure>
+    </div>
+    <script>
+        function openCursor() {
+            window.open("https://cursor.sh", "_blank");
+        }
+        
+        window.onload = function() {
+            console.log("Page loaded");
+            let figures = document.querySelectorAll("figure");
+            figures.forEach((figure, index) => {
+                figure.setAttribute("tabindex", "0");
+                figure.addEventListener("mouseover", () => console.log("Mouse over image " + (index + 1)));
+                figure.addEventListener("mouseleave", () => console.log("Mouse left image " + (index + 1)));
+                figure.addEventListener("focus", () => console.log("Focused on image " + (index + 1)));
+                figure.addEventListener("blur", () => console.log("Blurred from image " + (index + 1)));
+            });
+        };
+    </script>
+</body>
+</html>
+
