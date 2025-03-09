@@ -28,26 +28,46 @@
         img:hover, figure:focus img {
             transform: scale(1.1);
         }
+        .info {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <h1>Interactive Photo Gallery</h1>
     <div class="gallery" id="gallery">
-        <figure><img src="https://source.unsplash.com/400x300/?car" alt="Car 1"></figure>
-        <figure><img src="https://source.unsplash.com/400x300/?sports-car" alt="Car 2"></figure>
-        <figure><img src="https://source.unsplash.com/400x300/?luxury-car" alt="Car 3"></figure>
-        <figure><img src="https://source.unsplash.com/400x300/?classic-car" alt="Car 4"></figure>
-        <figure><img src="https://source.unsplash.com/400x300/?supercar" alt="Car 5"></figure>
-        <figure><img src="https://source.unsplash.com/400x300/?race-car" alt="Car 6"></figure>
+        <figure data-info="Classic Car - A vintage beauty from the 1950s.">
+            <img src="https://cdn.pixabay.com/photo/2012/05/29/00/43/car-49278_640.jpg" alt="Car 1">
+        </figure>
+        <figure data-info="Sports Car - High-speed performance with sleek design.">
+            <img src="https://cdn.pixabay.com/photo/2012/04/12/23/48/car-30990_640.png" alt="Car 2">
+        </figure>
+        <figure data-info="Luxury Car - A premium experience with cutting-edge technology.">
+            <img src="https://cdn.pixabay.com/photo/2016/04/17/22/10/mercedes-benz-1335674_640.png" alt="Car 3">
+        </figure>
+        <figure data-info="Coupe - Compact and stylish for an urban drive.">
+            <img src="https://cdn.pixabay.com/photo/2016/05/05/18/02/coupe-1374446_640.jpg" alt="Car 4">
+        </figure>
+        <figure data-info="Electric Car - Eco-friendly and futuristic design.">
+            <img src="https://cdn.pixabay.com/photo/2016/04/01/12/16/car-1300629_640.png" alt="Car 5">
+        </figure>
+        <figure data-info="Off-road SUV - Designed for adventure and tough terrains.">
+            <img src="https://cdn.pixabay.com/photo/2020/09/06/07/37/car-5548242_640.jpg" alt="Car 6">
+        </figure>
     </div>
+    <div class="info" id="carInfo">Click on a car to see details.</div>
     <script>
         window.onload = function() {
             console.log("Page loaded");
             let figures = document.querySelectorAll("figure");
+            let infoBox = document.getElementById("carInfo");
             figures.forEach((figure, index) => {
                 figure.setAttribute("tabindex", "0");
                 figure.addEventListener("click", () => {
-                    window.open("https://cursor.sh", "_blank");
+                    let info = figure.getAttribute("data-info");
+                    infoBox.textContent = info;
                 });
                 figure.addEventListener("mouseover", () => console.log("Mouse over image " + (index + 1)));
                 figure.addEventListener("mouseleave", () => console.log("Mouse left image " + (index + 1)));
