@@ -1,0 +1,59 @@
+/* Default Mobile View (Single Column) */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box {
+    width: 80%;
+    background: white;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Tablet View (≥772px) - Two Columns */
+@media (min-width: 772px) {
+    main {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .box {
+        width: 45%;
+    }
+
+    img {
+        max-height: 30vh;
+    }
+}
+
+/* Large Screen View (≥998px) - Three Columns */
+@media (min-width: 998px) {
+    .box {
+        width: 30%;
+    }
+}
